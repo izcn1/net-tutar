@@ -2,10 +2,6 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import CalculatorCard from '@/components/CalculatorCard';
 
-// Note: I'll use simple SVG icons since I shouldn't rely on external libraries if not installed.
-// Wait, the user said "No external UI libraries" - strictly speaking. 
-// I'll use inline SVGs to be safe and performant.
-
 const icons = {
   maas: (
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -27,22 +23,23 @@ const icons = {
       <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0h.008v.008H19.5V19.5m-1.5 0h.008v.008H18V19.5Z" />
     </svg>
   ),
-  zam: (
+  kdv: (
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 0 1 5.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
     </svg>
   ),
-  kidem: (
+  asgari: (
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75c.621 0 1.125.504 1.125 1.125v17.25c0 .621-.504 1.125-1.125 1.125H5.625c-.621 0-1.125-.504-1.125-1.125V5.625c0-.621.504-1.125 1.125-1.125Z" />
     </svg>
   )
 }
 
 export const metadata = {
-  title: 'net-tutar | Türkiye\'nin Finansal Hesaplama Platformu',
-  description: 'Maaş, emeklilik, kredi ve vergi hesaplamalarınızı en güncel SGK ve vergi kurallarına göre yapın.',
-}
+  title: "Net Tutar Hesaplama 2026 - Maaş, KDV, Emeklilik",
+  description: "Net maaş hesaplama, brüt-net dönüşüm, KDV hesaplama ve emeklilik yaşı hesaplama aracı. En güncel 2026 finansal verileri.",
+  keywords: "net maaş hesaplama, brütten nete, emeklilik hesaplama, kdv hesaplama, asgari ücret 2026",
+};
 
 export default function Home() {
   return (
@@ -63,7 +60,7 @@ export default function Home() {
           <div className="flex flex-wrap justify-center gap-4">
             <div className="bg-white px-6 py-3 rounded-2xl shadow-soft border border-gray-100 flex items-center space-x-2">
               <span className="w-2 h-2 bg-accent rounded-full animate-pulse"></span>
-              <span className="text-sm font-semibold text-primary">2024 Güncel Mevzuat</span>
+              <span className="text-sm font-semibold text-primary">2026 Güncel Mevzuat</span>
             </div>
             <div className="bg-white px-6 py-3 rounded-2xl shadow-soft border border-gray-100 flex items-center space-x-2">
               <span className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
@@ -78,13 +75,25 @@ export default function Home() {
             title="Net - Brüt Maaş"
             description="Maaşınızdaki tüm kesintileri, gelir vergisi dilimlerini ve elinize geçecek net tutarı hesaplayın."
             icon={icons.maas}
-            href="/maas-hesaplama"
+            href="/net-maas-hesaplama"
           />
           <CalculatorCard
             title="Emeklilik Hesaplama"
             description="SGK giriş tarihinize ve prim gününüze göre ne zaman emekli olabileceğinizi hemen öğrenin."
             icon={icons.emeklilik}
             href="/emeklilik-hesaplama"
+          />
+          <CalculatorCard
+            title="KDV Hesaplama"
+            description="Dahil veya hariç seçenekleriyle KDV tutarlarını hızlıca hesaplayın."
+            icon={icons.kdv}
+            href="/kdv-hesaplama"
+          />
+          <CalculatorCard
+            title="Asgari Ücret 2026"
+            description="2026 yılı asgari ücret net tutarı ve işveren maliyeti detaylarını inceleyin."
+            icon={icons.asgari}
+            href="/asgari-ucret-hesaplama"
           />
           <CalculatorCard
             title="Kredi Faiz Hesaplama"
@@ -98,22 +107,72 @@ export default function Home() {
             icon={icons.vergi}
             href="/vergi-dilimi"
           />
-          <CalculatorCard
-            title="Zam Oranı"
-            description="Maaş artış oranınızı yüzde veya tutar olarak kolayca hesaplayın ve karşılaştırın."
-            icon={icons.zam}
-            href="/zam-hesaplama"
-          />
-          <CalculatorCard
-            title="Kıdem Tazminatı"
-            description="Çalışma sürenize ve son brüt maaşınıza göre alacağınız tazminat miktarını öğrenin."
-            icon={icons.kidem}
-            href="/kidem-tazminati"
-          />
         </div>
 
-        {/* Trust Message */}
-        <section className="mt-32 p-12 bg-primary rounded-[3rem] text-center text-white relative overflow-hidden">
+        {/* SEO Content Section */}
+        <section className="mt-32 prose prose-slate max-w-none bg-white p-8 md:p-16 rounded-[3rem] shadow-soft border border-gray-100">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-black text-primary mb-8">Finansal Rehber: Maaş ve Emeklilik Hakkında Merak Edilenler</h2>
+
+            <div className="space-y-12 text-gray-600 leading-relaxed">
+              <div>
+                <h3 className="text-2xl font-bold text-primary mb-4">Net Maaş Nedir?</h3>
+                <p>
+                  Net maaş, bir çalışanın tüm yasal kesintiler (SGK işçi payı, işsizlik sigortası, gelir vergisi ve damga vergisi) yapıldıktan sonra fiilen eline geçen tutardır.
+                  İş sözleşmelerinde genellikle brüt maaş üzerinden anlaşma yapılır ancak çalışanın bütçe planlaması için asıl kritik olan <strong>net maaş hesaplama</strong> işlemidir.
+                  Net maaşınız, yıl içinde girdiğiniz gelir vergisi dilimlerine göre değişkenlik gösterebilir.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-2xl font-bold text-primary mb-4">Brüt Maaş Nasıl Hesaplanır?</h3>
+                <p>
+                  Brüt maaş, işverenin çalışan için ödediği toplam rakamın vergiler düşülmeden önceki halidir. <strong>Brütten nete hesaplama</strong> yapılırken sırasıyla şu adımlar izlenir:
+                </p>
+                <ul className="list-disc pl-5 space-y-2 mt-4">
+                  <li>Brüt tutardan %14 SGK İşçi Payı düşülür.</li>
+                  <li>%1 İşsizlik Sigortası işçi payı düşülür.</li>
+                  <li>Kalan tutardan gelir vergisi matrahı oluşturulur ve ilgili vergi dilimi oranında kesinti yapılır.</li>
+                  <li>Binde 7.59 oranında damga vergisi kesilir.</li>
+                  <li>Kalan tutar sizin net maaşınızdır.</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="text-2xl font-bold text-primary mb-4">2026 Emeklilik Şartları ve EYT Sonrası Durum</h3>
+                <p>
+                  Türkiye'de emeklilik sistemi 1999 ve 2008 yıllarında yapılan köklü değişikliklerle kademeli hale getirilmiştir. <strong>2026 emeklilik şartları</strong>, sigorta başlangıç tarihinize göre belirlenir:
+                </p>
+                <p className="mt-4">
+                  8 Eylül 1999 öncesi girişliler için yaş şartı kaldırılmış (EYT), ancak prim gün sayısı ve sigortalılık süresi şartları devam etmektedir.
+                  1999-2008 arası girişliler için kadınlarda 58, erkeklerde 60 yaş şartı uygulanırken; 2008 sonrası girişliler için bu sınır 65 yaşa kadar kademeli olarak yükselmektedir.
+                  Sitemizdeki <strong>emeklilik hesaplama</strong> aracı ile en güncel mevzuata göre durumunuzu sorgulayabilirsiniz.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-2xl font-bold text-primary mb-4">SGK Prim Hesaplama Nasıl Yapılır?</h3>
+                <p>
+                  SGK primleri, çalışanın brüt kazancı üzerinden hesaplanır. Toplam prim oranı %37.5'tir. Bunun %14+1'lik kısmı çalışandan, %20.5+2'lik kısmı işverenden kesilir.
+                  <strong>SGK prim hesaplama</strong> yapılırken tavan ve taban fiyatlar (asgari ücretin 7.5 katı) dikkate alınır.
+                  Düzenli ödeme yapan işverenler için %5'lik bir indirim teşviki de uygulanmaktadır.
+                </p>
+              </div>
+
+              <div className="bg-bgColor p-8 rounded-2xl border border-blue-100">
+                <h3 className="text-xl font-bold text-primary mb-4 text-center">Neden net-tutar.com'u Kullanmalısınız?</h3>
+                <p className="text-sm text-center italic">
+                  Finansal dünyadaki karmaşık formülleri basit ve anlaşılır bir arayüze dönüştürüyoruz.
+                  Verileriniz sunucularımızda tutulmaz, tüm işlemler tarayıcınızda gerçekleşir.
+                  En güncel 2026 vergi dilimleri ve SGK tavan fiyatları ile her zaman doğru sonuç veririz.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Trust Message Extension */}
+        <section className="mt-20 p-12 bg-primary rounded-[3rem] text-center text-white relative overflow-hidden">
           <div className="relative z-10">
             <h2 className="text-3xl font-bold mb-4">Güvenilir ve Şeffaf Hesaplama</h2>
             <p className="text-gray-400 max-w-xl mx-auto">
@@ -121,7 +180,6 @@ export default function Home() {
               Verileriniz cihazınızda işlenir, asla sunucularımıza gönderilmez.
             </p>
           </div>
-          {/* Decorative elements */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-accent/10 rounded-full -mr-32 -mt-32 blur-3xl"></div>
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-accent/5 rounded-full -ml-32 -mb-32 blur-3xl"></div>
         </section>

@@ -11,7 +11,7 @@ const Navbar = () => {
                         </span>
                     </Link>
                     <div className="hidden md:flex space-x-8">
-                        <Link href="/maas-hesaplama" className="text-gray-600 hover:text-accent font-medium transition-colors">Maaş</Link>
+                        <Link href="/net-maas-hesaplama" className="text-gray-600 hover:text-accent font-medium transition-colors">Maaş</Link>
                         <Link href="/emeklilik-hesaplama" className="text-gray-600 hover:text-accent font-medium transition-colors">Emeklilik</Link>
                         <Link href="/kredi-hesaplama" className="text-gray-600 hover:text-accent font-medium transition-colors">Kredi</Link>
                     </div>

@@ -14,7 +14,7 @@ const Footer = () => {
                     <div>
                         <h4 className="font-bold mb-4 text-accent">Hızlı Linkler</h4>
                         <ul className="space-y-2 text-gray-400">
-                            <li><Link href="/maas-hesaplama" className="hover:text-white transition-colors">Maaş Hesaplama</Link></li>
+                            <li><Link href="/net-maas-hesaplama" className="hover:text-white transition-colors">Maaş Hesaplama</Link></li>
                             <li><Link href="/emeklilik-hesaplama" className="hover:text-white transition-colors">Emeklilik Hesaplama</Link></li>
                             <li><Link href="/kredi-hesaplama" className="hover:text-white transition-colors">Kredi Hesaplama</Link></li>
                             <li><Link href="/vergi-dilimi" className="hover:text-white transition-colors">Vergi Dilimi</Link></li>
