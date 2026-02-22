@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import InputField from '@/components/InputField';
@@ -8,15 +8,17 @@ import ResultCard from '@/components/ResultCard';
 import FAQ from '@/components/FAQ';
 import taxRules from '@/data/taxRules.json';
 
+interface ResultItem {
+    label: string;
+    value: string | number;
+    highlight?: boolean;
+}
+
 export default function VergiCalculator() {
     const [kumulatifMatrah, setKumulatifMatrah] = useState<number>(150000);
-    const [results, setResults] = useState<any>(null);
+    const [results, setResults] = useState<ResultItem[] | null>(null);
 
-    useEffect(() => {
-        calculate();
-    }, [kumulatifMatrah]);
-
-    const calculate = () => {
+    const calculate = useCallback(() => {
         let currentRate = 15;
         let nextLimit = 0;
 
@@ -36,7 +38,11 @@ export default function VergiCalculator() {
             { label: 'Sonraki Dilim Sınırı', value: nextLimit ? `${nextLimit.toLocaleString('tr-TR')} TL` : 'En Üst Dilim' },
             { label: 'Sonraki Dilime Kalan', value: nextLimit ? `${remainingToNext.toLocaleString('tr-TR')} TL` : '0 TL' },
         ]);
-    };
+    }, [kumulatifMatrah]);
+
+    useEffect(() => {
+        calculate();
+    }, [calculate]);
 
     const faqItems = [
         {
@@ -56,7 +62,7 @@ export default function VergiCalculator() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div className="bg-white p-6 rounded-2xl shadow-soft border border-gray-100">
-                        <InputField label="Toplam Kümülatif Matrah (TL)" type="number" value={kumulatifMatrah} onChange={setKumulatifMatrah} />
+                        <InputField label="Toplam Kümülatif Matrah (TL)" type="number" value={kumulatifMatrah} onChange={(val) => setKumulatifMatrah(val as number)} />
                     </div>
 
                     {results && (

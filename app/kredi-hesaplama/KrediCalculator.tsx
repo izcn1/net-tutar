@@ -1,23 +1,25 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import InputField from '@/components/InputField';
 import ResultCard from '@/components/ResultCard';
 import FAQ from '@/components/FAQ';
 
+interface ResultItem {
+    label: string;
+    value: string | number;
+    highlight?: boolean;
+}
+
 export default function KrediCalculator() {
     const [amount, setAmount] = useState<number>(100000);
     const [interest, setInterest] = useState<number>(3.5);
     const [term, setTerm] = useState<number>(12);
-    const [results, setResults] = useState<any>(null);
+    const [results, setResults] = useState<ResultItem[] | null>(null);
 
-    useEffect(() => {
-        calculate();
-    }, [amount, interest, term]);
-
-    const calculate = () => {
+    const calculate = useCallback(() => {
         if (!amount || !interest || !term) return;
 
         const monthlyInterest = interest / 100;
@@ -30,7 +32,11 @@ export default function KrediCalculator() {
             { label: 'Toplam Geri Ödeme', value: `${totalPayment.toLocaleString('tr-TR', { maximumFractionDigits: 2 })} TL` },
             { label: 'Toplam Faiz', value: `${totalInterest.toLocaleString('tr-TR', { maximumFractionDigits: 2 })} TL` },
         ]);
-    };
+    }, [amount, interest, term]);
+
+    useEffect(() => {
+        calculate();
+    }, [calculate]);
 
     const faqItems = [
         {
@@ -54,9 +60,9 @@ export default function KrediCalculator() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div className="bg-white p-6 rounded-2xl shadow-soft border border-gray-100">
-                        <InputField label="Kredi Tutarı (TL)" type="number" value={amount} onChange={setAmount} />
-                        <InputField label="Aylık Faiz Oranı (%)" type="number" value={interest} onChange={setInterest} />
-                        <InputField label="Vade (Ay)" type="number" value={term} onChange={setTerm} />
+                        <InputField label="Kredi Tutarı (TL)" type="number" value={amount} onChange={(val) => setAmount(val as number)} />
+                        <InputField label="Aylık Faiz Oranı (%)" type="number" value={interest} onChange={(val) => setInterest(val as number)} />
+                        <InputField label="Vade (Ay)" type="number" value={term} onChange={(val) => setTerm(val as number)} />
                     </div>
 
                     {results && (

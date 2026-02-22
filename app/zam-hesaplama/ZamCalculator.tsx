@@ -1,22 +1,24 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import InputField from '@/components/InputField';
 import ResultCard from '@/components/ResultCard';
 import FAQ from '@/components/FAQ';
 
+interface ResultItem {
+    label: string;
+    value: string | number;
+    highlight?: boolean;
+}
+
 export default function ZamCalculator() {
     const [oldSalary, setOldSalary] = useState<number>(25000);
     const [newSalary, setNewSalary] = useState<number>(31250);
-    const [results, setResults] = useState<any>(null);
+    const [results, setResults] = useState<ResultItem[] | null>(null);
 
-    useEffect(() => {
-        calculate();
-    }, [oldSalary, newSalary]);
-
-    const calculate = () => {
+    const calculate = useCallback(() => {
         if (!oldSalary || !newSalary) return;
 
         const diff = newSalary - oldSalary;
@@ -28,7 +30,11 @@ export default function ZamCalculator() {
             { label: 'Artış Tutarı', value: `${diff.toLocaleString('tr-TR')} TL` },
             { label: 'Zam Oranı', value: `%${percentage.toFixed(2)}`, highlight: true },
         ]);
-    };
+    }, [oldSalary, newSalary]);
+
+    useEffect(() => {
+        calculate();
+    }, [calculate]);
 
     const faqItems = [
         {
@@ -48,8 +54,8 @@ export default function ZamCalculator() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div className="bg-white p-6 rounded-2xl shadow-soft border border-gray-100">
-                        <InputField label="Eski Maaş (TL)" type="number" value={oldSalary} onChange={setOldSalary} />
-                        <InputField label="Yeni Maaş (TL)" type="number" value={newSalary} onChange={setNewSalary} />
+                        <InputField label="Eski Maaş (TL)" type="number" value={oldSalary} onChange={(val) => setOldSalary(val as number)} />
+                        <InputField label="Yeni Maaş (TL)" type="number" value={newSalary} onChange={(val) => setNewSalary(val as number)} />
                     </div>
 
                     {results && (

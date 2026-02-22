@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import InputField from '@/components/InputField';
@@ -8,26 +8,35 @@ import ResultCard from '@/components/ResultCard';
 import FAQ from '@/components/FAQ';
 import rules from '@/data/retirementRules.json';
 
+interface ResultItem {
+    label: string;
+    value: string | number;
+    highlight?: boolean;
+}
+
+interface Rule {
+    startDate: string;
+    endDate: string;
+    male: { age: number; days: number };
+    female: { age: number; days: number };
+}
+
 export default function EmeklilikCalculator() {
     const [birthDate, setBirthDate] = useState<string>('1985-01-01');
     const [entryDate, setEntryDate] = useState<string>('2005-01-01');
-    const [gender, setGender] = useState<string>('male');
+    const [gender, setGender] = useState<'male' | 'female'>('male');
     const [totalDays, setTotalDays] = useState<number>(5000);
-    const [results, setResults] = useState<any>(null);
+    const [results, setResults] = useState<ResultItem[] | null>(null);
 
-    useEffect(() => {
-        calculate();
-    }, [birthDate, entryDate, gender, totalDays]);
-
-    const calculate = () => {
-        const entry = new Date(entryDate);
+    const calculate = useCallback(() => {
         const birth = new Date(birthDate);
 
         // Find applicable rule based on entry date
-        const applicableRule = (rules.rulesByEntryDate as any[]).find((r: any) =>
+        const applicableRules = rules.rulesByEntryDate as Rule[];
+        const applicableRule = applicableRules.find((r: Rule) =>
             new Date(entryDate) >= new Date(r.startDate) &&
             new Date(entryDate) <= new Date(r.endDate)
-        ) || rules.rulesByEntryDate[rules.rulesByEntryDate.length - 1];
+        ) || applicableRules[applicableRules.length - 1];
 
         const targetAge = gender === 'female' ? applicableRule.female.age : applicableRule.male.age;
         const targetDays = gender === 'female' ? applicableRule.female.days : applicableRule.male.days;
@@ -35,16 +44,17 @@ export default function EmeklilikCalculator() {
         const retirementYearByAge = birth.getFullYear() + targetAge;
         const daysNeeded = Math.max(0, targetDays - totalDays);
 
-        const today = new Date();
-        const currentAge = today.getFullYear() - birth.getFullYear();
-
         setResults([
             { label: 'Emeklilik Yaşı', value: targetAge },
             { label: 'Gereken Toplam Prim', value: `${targetDays} Gün` },
             { label: 'Kalan Prim Gün Sayısı', value: `${daysNeeded} Gün` },
             { label: 'Tahmini Emeklilik Yılı', value: retirementYearByAge, highlight: true },
         ]);
-    };
+    }, [birthDate, entryDate, gender, totalDays]);
+
+    useEffect(() => {
+        calculate();
+    }, [calculate]);
 
     const faqItems = [
         {
@@ -68,18 +78,18 @@ export default function EmeklilikCalculator() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div className="bg-white p-6 rounded-2xl shadow-soft border border-gray-100">
-                        <InputField label="Doğum Tarihi" type="date" value={birthDate} onChange={setBirthDate} />
-                        <InputField label="İlk Sigorta Girişi" type="date" value={entryDate} onChange={setEntryDate} />
+                        <InputField label="Doğum Tarihi" type="date" value={birthDate} onChange={(val) => setBirthDate(val as string)} />
+                        <InputField label="İlk Sigorta Girişi" type="date" value={entryDate} onChange={(val) => setEntryDate(val as string)} />
                         <InputField
                             label="Cinsiyet"
                             value={gender}
-                            onChange={setGender}
+                            onChange={(val) => setGender(val as 'male' | 'female')}
                             options={[
                                 { label: 'Erkek', value: 'male' },
                                 { label: 'Kadın', value: 'female' }
                             ]}
                         />
-                        <InputField label="Toplam Prim Günü" type="number" value={totalDays} onChange={setTotalDays} />
+                        <InputField label="Toplam Prim Günü" type="number" value={totalDays} onChange={(val) => setTotalDays(val as number)} />
                     </div>
 
                     {results && (

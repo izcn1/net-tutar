@@ -1,23 +1,25 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import InputField from '@/components/InputField';
 import ResultCard from '@/components/ResultCard';
 import FAQ from '@/components/FAQ';
 
+interface ResultItem {
+    label: string;
+    value: string | number;
+    highlight?: boolean;
+}
+
 export default function KidemCalculator() {
     const [startDate, setStartDate] = useState<string>('2020-01-01');
     const [endDate, setEndDate] = useState<string>(new Date().toISOString().split('T')[0]);
     const [grossSalary, setGrossSalary] = useState<number>(40000);
-    const [results, setResults] = useState<any>(null);
+    const [results, setResults] = useState<ResultItem[] | null>(null);
 
-    useEffect(() => {
-        calculate();
-    }, [startDate, endDate, grossSalary]);
-
-    const calculate = () => {
+    const calculate = useCallback(() => {
         const start = new Date(startDate);
         const end = new Date(endDate);
 
@@ -26,7 +28,7 @@ export default function KidemCalculator() {
         const totalDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
         const years = totalDays / 365.25;
 
-        // Kıdem tazminatı tavanı (January 2024 for example: 35.058,58 TL)
+        // Kıdem tazminatı tavanı (January 2024 example: 35.058,58 TL)
         const tavan = 35058.58;
         const effectiveSalary = Math.min(grossSalary, tavan);
 
@@ -41,7 +43,11 @@ export default function KidemCalculator() {
             { label: 'Damga Vergisi Kesintisi', value: `${damgaVergisi.toLocaleString('tr-TR', { maximumFractionDigits: 2 })} TL` },
             { label: 'Net Kıdem Tazminatı', value: `${netKidem.toLocaleString('tr-TR', { maximumFractionDigits: 2 })} TL`, highlight: true },
         ]);
-    };
+    }, [startDate, endDate, grossSalary]);
+
+    useEffect(() => {
+        calculate();
+    }, [calculate]);
 
     const faqItems = [
         {
@@ -65,9 +71,9 @@ export default function KidemCalculator() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div className="bg-white p-6 rounded-2xl shadow-soft border border-gray-100">
-                        <InputField label="İş Başlangıç Tarihi" type="date" value={startDate} onChange={setStartDate} />
-                        <InputField label="İşten Ayrılış Tarihi" type="date" value={endDate} onChange={setEndDate} />
-                        <InputField label="Son Brüt Maaş (TL)" type="number" value={grossSalary} onChange={setGrossSalary} />
+                        <InputField label="İş Başlangıç Tarihi" type="date" value={startDate} onChange={(val) => setStartDate(val as string)} />
+                        <InputField label="İşten Ayrılış Tarihi" type="date" value={endDate} onChange={(val) => setEndDate(val as string)} />
+                        <InputField label="Son Brüt Maaş (TL)" type="number" value={grossSalary} onChange={(val) => setGrossSalary(val as number)} />
                     </div>
 
                     {results && (

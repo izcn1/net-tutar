@@ -8,7 +8,7 @@ const Footer = () => {
                     <div className="col-span-1 md:col-span-2">
                         <h2 className="text-2xl font-black mb-4">net-tutar<span className="text-accent">.</span></h2>
                         <p className="text-gray-400 max-w-sm">
-                            Türkiye'nin en güvenilir finansal hesaplama platformu. Maaş, emeklilik, kredi ve vergi hesaplamalarınızı saniyeler içinde yapın.
+                            Türkiye&apos;nin en güvenilir finansal hesaplama platformu. Maaş, emeklilik, kredi ve vergi hesaplamalarınızı saniyeler içinde yapın.
                         </p>
                     </div>
                     <div>

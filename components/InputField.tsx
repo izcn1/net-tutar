@@ -1,16 +1,16 @@
 import React from 'react';
 
-interface InputFieldProps {
+interface InputFieldProps<T extends string | number> {
     label: string;
     type?: string;
-    value: string | number;
-    onChange: (value: any) => void;
+    value: T;
+    onChange: (value: T) => void;
     placeholder?: string;
     error?: string;
     options?: { label: string; value: string | number }[];
 }
 
-const InputField: React.FC<InputFieldProps> = ({
+function InputField<T extends string | number>({
     label,
     type = 'text',
     value,
@@ -18,7 +18,7 @@ const InputField: React.FC<InputFieldProps> = ({
     placeholder,
     error,
     options,
-}) => {
+}: InputFieldProps<T>) {
     return (
         <div className="mb-4">
             <label className="block text-sm font-medium text-primary mb-1">
@@ -27,7 +27,7 @@ const InputField: React.FC<InputFieldProps> = ({
             {options ? (
                 <select
                     value={value}
-                    onChange={(e) => onChange(e.target.value)}
+                    onChange={(e) => onChange(e.target.value as T)}
                     className="w-full px-4 py-2 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
                 >
                     {options.map((opt) => (
@@ -40,7 +40,10 @@ const InputField: React.FC<InputFieldProps> = ({
                 <input
                     type={type}
                     value={value}
-                    onChange={(e) => onChange(type === 'number' ? Number(e.target.value) : e.target.value)}
+                    onChange={(e) => {
+                        const val = type === 'number' ? Number(e.target.value) : e.target.value;
+                        onChange(val as T);
+                    }}
                     placeholder={placeholder}
                     className="w-full px-4 py-2 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
                 />
@@ -48,6 +51,6 @@ const InputField: React.FC<InputFieldProps> = ({
             {error && <p className="text-red-500 text-xs mt-1">{error}</p>}
         </div>
     );
-};
+}
 
 export default InputField;
