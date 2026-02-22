@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# hesaplayicim. - Finansal Hesaplama Platformu
 
-## Getting Started
+Modern, güvenilir ve tamamen Türkçe finansal hesaplama platformu. Next.js 14, TypeScript ve TailwindCSS kullanılarak geliştirilmiştir.
 
-First, run the development server:
+## 🚀 Özellikler
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Net - Brüt Maaş:** 2024 güncel vergi dilimleri ve SGK kesintileri.
+- **Emeklilik Hesaplama:** EYT ve güncel SGK mevzuatı uyumlu.
+- **Kredi Faiz:** Amortisman formülü ile detaylı ödeme planı.
+- **Vergi Dilimi:** Kümülatif matraha göre vergi analizi.
+- **Zam Oranı:** Artış mikarı ve yüzdesel değişim.
+- **Kıdem Tazminatı:** Tavan fiyat uygulamalı tazminat hesabı.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Teknoloji Yığını
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Framework:** Next.js 14 (App Router)
+- **Dil:** TypeScript
+- **Styling:** TailwindCSS
+- **Font:** Inter (Google Fonts)
+- **Deployment:** Vercel Ready
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📦 Kurulum
 
-## Learn More
+1. Depoyu klonlayın.
+2. Bağımlılıkları yükleyin:
+   ```bash
+   npm install
+   ```
+3. Geliştirme sunucusunu başlatın:
+   ```bash
+   npm run dev
+   ```
+4. Tarayıcınızda `http://localhost:3000` adresini açın.
 
-To learn more about Next.js, take a look at the following resources:
+## ⚙️ Kuralları Güncelleme
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Hesaplama kuralları ve vergi oranları `/data` klasöründeki JSON dosyalarından güncellenebilir:
+- `taxRules.json`: Vergi dilimleri ve sigorta oranları.
+- `retirementRules.json`: Emeklilik yaşı ve prim gün şartları.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🌐 Vercel Deployment
 
-## Deploy on Vercel
+Bu proje Vercel ile tam uyumludur. Deploy etmek için:
+1. GitHub deponuzu Vercel'e bağlayın.
+2. Proje ayarlarını (Next.js) otomatik tanıyacaktır.
+3. `Deploy` butonuna basın.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+*Bu platform eğitim ve bilgilendirme amaçlıdır. Resmi finansal kararlarınız için uzman görüşü almanız önerilir.*

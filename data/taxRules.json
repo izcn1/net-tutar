@@ -1,0 +1,29 @@
+{
+    "2024": [
+        {
+            "limit": 110000,
+            "rate": 15
+        },
+        {
+            "limit": 230000,
+            "rate": 20
+        },
+        {
+            "limit": 870000,
+            "rate": 27
+        },
+        {
+            "limit": 3000000,
+            "rate": 35
+        },
+        {
+            "limit": null,
+            "rate": 40
+        }
+    ],
+    "insurance": {
+        "employee": 14,
+        "unemployment": 1
+    },
+    "stampTaxRate": 0.00759
+}

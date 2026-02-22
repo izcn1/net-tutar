@@ -1,0 +1,38 @@
+{
+    "earlyRetirement": {
+        "female": {
+            "minAge": 58,
+            "minDays": 7200
+        },
+        "male": {
+            "minAge": 60,
+            "minDays": 7200
+        }
+    },
+    "rulesByEntryDate": [
+        {
+            "startDate": "1999-09-08",
+            "endDate": "2008-04-30",
+            "female": {
+                "age": 58,
+                "days": 7000
+            },
+            "male": {
+                "age": 60,
+                "days": 7000
+            }
+        },
+        {
+            "startDate": "2008-05-01",
+            "endDate": "2040-12-31",
+            "female": {
+                "age": 58,
+                "days": 7200
+            },
+            "male": {
+                "age": 60,
+                "days": 7200
+            }
+        }
+    ]
+}
