@@ -141,7 +141,7 @@ export default function Home() {
               <div>
                 <h3 className="text-2xl font-bold text-primary mb-4">2026 Emeklilik Şartları ve EYT Sonrası Durum</h3>
                 <p>
-                  Türkiye'de emeklilik sistemi 1999 ve 2008 yıllarında yapılan köklü değişikliklerle kademeli hale getirilmiştir. <strong>2026 emeklilik şartları</strong>, sigorta başlangıç tarihinize göre belirlenir:
+                  Türkiye&apos;de emeklilik sistemi 1999 ve 2008 yıllarında yapılan köklü değişikliklerle kademeli hale getirilmiştir. <strong>2026 emeklilik şartları</strong>, sigorta başlangıç tarihinize göre belirlenir:
                 </p>
                 <p className="mt-4">
                   8 Eylül 1999 öncesi girişliler için yaş şartı kaldırılmış (EYT), ancak prim gün sayısı ve sigortalılık süresi şartları devam etmektedir.
@@ -153,14 +153,14 @@ export default function Home() {
               <div>
                 <h3 className="text-2xl font-bold text-primary mb-4">SGK Prim Hesaplama Nasıl Yapılır?</h3>
                 <p>
-                  SGK primleri, çalışanın brüt kazancı üzerinden hesaplanır. Toplam prim oranı %37.5'tir. Bunun %14+1'lik kısmı çalışandan, %20.5+2'lik kısmı işverenden kesilir.
+                  SGK primleri, çalışanın brüt kazancı üzerinden hesaplanır. Toplam prim oranı %37.5&apos;tir. Bunun %14+1&apos;lik kısmı çalışandan, %20.5+2&apos;lik kısmı işverenden kesilir.
                   <strong>SGK prim hesaplama</strong> yapılırken tavan ve taban fiyatlar (asgari ücretin 7.5 katı) dikkate alınır.
-                  Düzenli ödeme yapan işverenler için %5'lik bir indirim teşviki de uygulanmaktadır.
+                  Düzenli ödeme yapan işverenler için %5&apos;lik bir indirim teşviki de uygulanmaktadır.
                 </p>
               </div>
 
               <div className="bg-bgColor p-8 rounded-2xl border border-blue-100">
-                <h3 className="text-xl font-bold text-primary mb-4 text-center">Neden net-tutar.com'u Kullanmalısınız?</h3>
+                <h3 className="text-xl font-bold text-primary mb-4 text-center">Neden net-tutar.com&apos;u Kullanmalısınız?</h3>
                 <p className="text-sm text-center italic">
                   Finansal dünyadaki karmaşık formülleri basit ve anlaşılır bir arayüze dönüştürüyoruz.
                   Verileriniz sunucularımızda tutulmaz, tüm işlemler tarayıcınızda gerçekleşir.

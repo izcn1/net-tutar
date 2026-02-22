@@ -22,7 +22,6 @@ export default function AsgariUcretCalculator() {
     const calculate = useCallback(() => {
         const sgkIsci = gross * 0.14;
         const issizlikIsci = gross * 0.01;
-        const gelirVergisiMatrahi = gross - sgkIsci - issizlikIsci;
 
         // Asgari ücret is exempt from Income Tax and Stamp Tax for most cases in TR currently
         const gelirVergisi = 0;
