@@ -1,8 +1,11 @@
 import KrediCalculator from './KrediCalculator';
 
 export const metadata = {
-    title: 'Kredi Faiz Hesaplama | Ödeme Planı Oluştur | net-tutar.',
-    description: 'Konut, taşıt ve ihtiyaç kredisi taksitlerini ve toplam geri ödemeyi hesaplayın.',
+    title: 'Kredi Faiz Hesaplama - Kredi Ödeme Planı Oluştur',
+    description: 'Konut, taşıt ve ihtiyaç kredisi taksitlerini hesaplayın. Aylık ödeme tutarı ve toplam geri ödeme miktarını görün.',
+    alternates: {
+        canonical: '/kredi-hesaplama',
+    },
 }
 
 export default function KrediPage() {

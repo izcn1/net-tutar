@@ -1,8 +1,11 @@
 import VergiCalculator from './VergiCalculator';
 
 export const metadata = {
-    title: 'Vergi Dilimi Hesaplama | 2024 Güncel | net-tutar.',
-    description: 'Gelir vergisi diliminizi ve kümülatif matraha göre kalan tutarı hesaplayın.',
+    title: 'Vergi Dilimi Hesaplama 2026 - Kümülatif Vergi Sorguma',
+    description: 'Gelir vergisi diliminizi ve kümülatif matraha göre kalan vergi sınırınızı hesaplayın. 2026 güncel vergi oranları.',
+    alternates: {
+        canonical: '/vergi-dilimi',
+    },
 }
 
 export default function VergiPage() {
