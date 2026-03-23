@@ -14,9 +14,10 @@ interface ResultItem {
 }
 
 export default function AsgariUcretCalculator() {
-    // Current 2024 real data but we can label it as 2026 or allow adjustment
-    // Let's use 2024 actuals as baseline and allow user to "simulate" extra
-    const [gross, setGross] = useState<number>(20002.50); // 2024 Actual
+    // 2026 Actual Data provided by user
+    // Gross: 33.030,00 TL
+    // Net: 28.075,50 TL
+    const [gross, setGross] = useState<number>(33030); 
     const [results, setResults] = useState<ResultItem[] | null>(null);
 
     const calculate = useCallback(() => {
@@ -49,6 +50,10 @@ export default function AsgariUcretCalculator() {
 
     const faqItems = [
         {
+            question: "2026 Asgari Ücreti ne kadardır?",
+            answer: "2026 yılı itibarıyla brüt asgari ücret 33.030,00 TL, çalışanın eline geçen net asgari ücret ise 28.075,50 TL olarak güncellenmiştir."
+        },
+        {
             question: "Asgari ücrette vergi istisnası nedir?",
             answer: "Türkiye'de asgari ücret tutarı kadar olan kazançlar gelir vergisi ve damga vergisinden muaftır. Bu sayede çalışanın eline geçen tutar artırılmıştır."
         },
@@ -64,33 +69,39 @@ export default function AsgariUcretCalculator() {
             <main className="max-w-4xl mx-auto px-4 py-12">
                 <div className="text-center mb-12">
                     <h1 className="text-4xl font-black text-primary mb-4 tracking-tight">Asgari Ücret Hesaplama 2026</h1>
-                    <p className="text-gray-600">Mevcut rakamları ve tahmini 2026 artışlarını analiz edin.</p>
+                    <p className="text-gray-600">2026 net asgari ücret rakamlarını ve detaylarını analiz edin.</p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div className="bg-white p-6 rounded-2xl shadow-soft border border-gray-100 h-fit">
-                        <InputField label="Tahmini Brüt Ücret (TL)" type="number" value={gross} onChange={(val) => setGross(val as number)} />
+                        <InputField label="Brüt Ücret (TL)" type="number" value={gross} onChange={(val) => setGross(val as number)} />
                         <div className="flex flex-wrap gap-2 mt-4">
                             <button
-                                onClick={() => setGross(20002.50)}
-                                className="text-xs px-3 py-1 bg-gray-100 rounded-full hover:bg-gray-200"
+                                onClick={() => setGross(33030)}
+                                className="text-xs px-3 py-1 bg-accent text-white rounded-full hover:bg-accent/90"
                             >
-                                2024 Mevcut (20.002,50 TL)
+                                2026 Güncel (33.030,00 TL)
                             </button>
                             <button
-                                onClick={() => setGross(30000)}
-                                className="text-xs px-3 py-1 bg-accent/10 text-accent rounded-full hover:bg-accent/20"
+                                onClick={() => setGross(40000)}
+                                className="text-xs px-3 py-1 bg-gray-100 rounded-full hover:bg-gray-200"
                             >
-                                %50 Tahmini 2026
+                                40.000 TL
+                            </button>
+                            <button
+                                onClick={() => setGross(50000)}
+                                className="text-xs px-3 py-1 bg-gray-100 rounded-full hover:bg-gray-200"
+                            >
+                                50.000 TL
                             </button>
                         </div>
                     </div>
 
                     {results && (
                         <ResultCard
-                            title="Asgari Ücret Detayları"
+                            title="2026 Asgari Ücret Detayları"
                             results={results}
-                            description="Veriler bilgilendirme amaçlıdır. Vergi istisnaları yansıtılmıştır."
+                            description="Mevcut 2026 yasal verileri baz alınmıştır. Vergi muafiyetleri uygulanmıştır."
                         />
                     )}
                 </div>

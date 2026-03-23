@@ -14,7 +14,7 @@ async function fetchNews(): Promise<NewsItem[]> {
     try {
         const res = await fetch(
             'https://news.google.com/rss/search?q=finans+borsa+dolar+alt%C4%B1n+ekonomi&hl=tr&gl=TR&ceid=TR:tr',
-            { next: { revalidate: 600 } } // Cache for 10 minutes
+            { next: { revalidate: 60 } } // Cache for 1 minute
         );
 
         if (!res.ok) return [];

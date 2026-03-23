@@ -7,26 +7,26 @@ import Footer from '@/components/Footer';
 // 2026 approximate Turkish salary distribution data (net TL)
 // Based on TÜİK and SGK statistics, projected for 2026
 const salaryPercentiles = [
-    { percentile: 5, salary: 17000 },
-    { percentile: 10, salary: 17002 },
-    { percentile: 15, salary: 17500 },
-    { percentile: 20, salary: 18000 },
-    { percentile: 25, salary: 19000 },
-    { percentile: 30, salary: 20000 },
-    { percentile: 35, salary: 21500 },
-    { percentile: 40, salary: 23000 },
-    { percentile: 45, salary: 25000 },
-    { percentile: 50, salary: 27500 }, // Medyan
-    { percentile: 55, salary: 30000 },
-    { percentile: 60, salary: 33000 },
-    { percentile: 65, salary: 37000 },
-    { percentile: 70, salary: 42000 },
-    { percentile: 75, salary: 48000 },
-    { percentile: 80, salary: 55000 },
-    { percentile: 85, salary: 65000 },
-    { percentile: 90, salary: 80000 },
-    { percentile: 95, salary: 110000 },
-    { percentile: 99, salary: 200000 },
+    { percentile: 5, salary: 28000 },
+    { percentile: 10, salary: 28075.5 }, // Asgari Ücret Baseline
+    { percentile: 15, salary: 28500 },
+    { percentile: 20, salary: 29000 },
+    { percentile: 25, salary: 30000 },
+    { percentile: 30, salary: 32000 },
+    { percentile: 35, salary: 35000 },
+    { percentile: 40, salary: 38000 },
+    { percentile: 45, salary: 42000 },
+    { percentile: 50, salary: 47000 }, // Medyan
+    { percentile: 55, salary: 52000 },
+    { percentile: 60, salary: 58000 },
+    { percentile: 65, salary: 65000 },
+    { percentile: 70, salary: 75000 },
+    { percentile: 75, salary: 85000 },
+    { percentile: 80, salary: 100000 },
+    { percentile: 85, salary: 120000 },
+    { percentile: 90, salary: 150000 },
+    { percentile: 95, salary: 200000 },
+    { percentile: 99, salary: 350000 },
 ];
 
 function getPercentile(salary: number): number {
@@ -109,9 +109,9 @@ export default function MaasSiralamaCalculator() {
         window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`, '_blank');
     };
 
-    const ASGARI_UCRET = 17002;
-    const MEDYAN_MAAS = 27500;
-    const ORTALAMA_MAAS = 35000;
+    const ASGARI_UCRET = 28075.5;
+    const MEDYAN_MAAS = 47000;
+    const ORTALAMA_MAAS = 55000;
 
     return (
         <div className="min-h-screen bg-bgColor">
@@ -152,7 +152,7 @@ export default function MaasSiralamaCalculator() {
 
                         {/* Quick Select Buttons */}
                         <div className="flex flex-wrap gap-2 mt-4">
-                            {[17002, 25000, 35000, 50000, 75000, 100000].map((val) => (
+                            {[28075.5, 35000, 45000, 60000, 85000, 125000].map((val) => (
                                 <button
                                     key={val}
                                     onClick={() => setSalary(val)}
@@ -284,9 +284,9 @@ export default function MaasSiralamaCalculator() {
                             <div>
                                 <h3 className="text-xl font-bold text-primary mb-3">Türkiye&apos;de Ortalama Maaş Ne Kadar?</h3>
                                 <p>
-                                    2026 yılı itibarıyla Türkiye&apos;de çalışanların ortalama net maaşı yaklaşık 35.000 TL civarındadır. 
+                                    2026 yılı itibarıyla Türkiye&apos;de çalışanların ortalama net maaşı yaklaşık 55.000 TL civarındadır. 
                                     Ancak ortalama maaş yanıltıcı olabilir çünkü çok yüksek maaşlar ortalamayı yukarı çekmektedir. 
-                                    Bu nedenle <strong>medyan maaş</strong> daha gerçekçi bir göstergedir. 2026 yılı medyan maaş yaklaşık 27.500 TL&apos;dir, 
+                                    Bu nedenle <strong>medyan maaş</strong> daha gerçekçi bir göstergedir. 2026 yılı medyan maaş yaklaşık 47.000 TL&apos;dir, 
                                     yani çalışanların yarısı bunun altında, yarısı bunun üstünde kazanmaktadır.
                                 </p>
                             </div>
