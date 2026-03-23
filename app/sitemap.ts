@@ -13,6 +13,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 1,
         },
         {
+            url: `${baseUrl}/maas-siralama`,
+            lastModified: new Date(),
+            changeFrequency: 'monthly',
+            priority: 0.9,
+        },
+        {
             url: `${baseUrl}/net-maas-hesaplama`,
             lastModified: new Date(),
             changeFrequency: 'monthly',

@@ -69,6 +69,32 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Featured: Maaş Sıralama CTA */}
+        <section className="mb-12">
+          <a href="/maas-siralama" className="block group">
+            <div className="relative overflow-hidden bg-gradient-to-r from-primary to-primary/80 rounded-3xl p-8 md:p-12 text-white shadow-xl hover:shadow-2xl transition-all">
+              <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+                <div>
+                  <div className="inline-flex items-center gap-2 bg-white/10 px-3 py-1 rounded-full text-sm font-medium mb-4">
+                    🔥 Yeni Özellik
+                  </div>
+                  <h2 className="text-3xl md:text-4xl font-black mb-3 tracking-tight">
+                    Maaşın Türkiye&apos;de Kaçıncı Sırada?
+                  </h2>
+                  <p className="text-white/70 max-w-lg">
+                    Net maaşını gir, Türkiye&apos;deki milyonlarca çalışan arasında nerede durduğunu hemen öğren.
+                  </p>
+                </div>
+                <div className="flex-shrink-0 bg-white text-primary px-8 py-4 rounded-2xl font-bold text-lg group-hover:scale-105 transition-transform shadow-lg">
+                  Hemen Dene →
+                </div>
+              </div>
+              <div className="absolute top-0 right-0 w-72 h-72 bg-accent/20 rounded-full -mr-20 -mt-20 blur-3xl"></div>
+              <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full -ml-10 -mb-10 blur-2xl"></div>
+            </div>
+          </a>
+        </section>
+
         {/* Calculators Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <CalculatorCard
