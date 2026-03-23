@@ -19,9 +19,9 @@ const Navbar = () => {
                         <Link href="/net-maas-hesaplama" className="text-gray-600 hover:text-accent font-medium transition-colors text-sm">Maaş</Link>
                         <Link href="/emeklilik-hesaplama" className="text-gray-600 hover:text-accent font-medium transition-colors text-sm">Emeklilik</Link>
                         <Link href="/kdv-hesaplama" className="text-gray-600 hover:text-accent font-medium transition-colors text-sm">KDV</Link>
-                        <Link href="/kredi-hesaplama" className="text-gray-600 hover:text-accent font-medium transition-colors text-sm">Kredi</Link>
+                        <Link href="/piyasalar" className="text-gray-600 hover:text-accent font-medium transition-colors text-sm">📈 Piyasalar</Link>
+                        <Link href="/finans-haberleri" className="text-gray-600 hover:text-accent font-medium transition-colors text-sm">📰 Haberler</Link>
                         <Link href="/hakkimizda" className="text-gray-600 hover:text-accent font-medium transition-colors text-sm">Hakkımızda</Link>
-                        <Link href="/iletisim" className="text-gray-600 hover:text-accent font-medium transition-colors text-sm">İletişim</Link>
                     </div>
                     {/* Mobile menu button */}
                     <button
@@ -50,6 +50,11 @@ const Navbar = () => {
                         <Link href="/asgari-ucret-hesaplama" onClick={() => setIsMenuOpen(false)} className="block text-gray-600 hover:text-accent font-medium transition-colors text-sm py-2">Asgari Ücret</Link>
                         <Link href="/kredi-hesaplama" onClick={() => setIsMenuOpen(false)} className="block text-gray-600 hover:text-accent font-medium transition-colors text-sm py-2">Kredi Hesaplama</Link>
                         <Link href="/vergi-dilimi" onClick={() => setIsMenuOpen(false)} className="block text-gray-600 hover:text-accent font-medium transition-colors text-sm py-2">Vergi Dilimi</Link>
+                        <div className="border-t border-gray-100 pt-3 mt-3">
+                            <Link href="/piyasalar" onClick={() => setIsMenuOpen(false)} className="block text-gray-600 hover:text-accent font-medium transition-colors text-sm py-2">📈 Canlı Piyasalar</Link>
+                            <Link href="/finans-haberleri" onClick={() => setIsMenuOpen(false)} className="block text-gray-600 hover:text-accent font-medium transition-colors text-sm py-2">📰 Finans Haberleri</Link>
+                            <Link href="/maas-siralama" onClick={() => setIsMenuOpen(false)} className="block text-gray-600 hover:text-accent font-medium transition-colors text-sm py-2">🏆 Maaş Sıralama</Link>
+                        </div>
                         <div className="border-t border-gray-100 pt-3 mt-3">
                             <Link href="/hakkimizda" onClick={() => setIsMenuOpen(false)} className="block text-gray-600 hover:text-accent font-medium transition-colors text-sm py-2">Hakkımızda</Link>
                             <Link href="/iletisim" onClick={() => setIsMenuOpen(false)} className="block text-gray-600 hover:text-accent font-medium transition-colors text-sm py-2">İletişim</Link>
