@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import CookieConsent from "@/components/CookieConsent";
 
 const inter = Inter({ subsets: ["latin"], display: 'swap' });
 
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
     template: "%s | net-tutar"
   },
   description: "Maaş, emeklilik, kredi ve vergi hesaplamalarınızı en güncel 2026 vergi kurallarına göre yapın. Güvenilir ve hızlı finansal araçlar.",
-  keywords: ["net maaş hesaplama", "emeklilik hesaplama", "kredi faiz hesaplama", "vergi dilimi", "asgari ücret 2026", "tazminat hesaplama"],
+  keywords: ["net maaş hesaplama", "emeklilik hesaplama", "kredi faiz hesaplama", "vergi dilimi", "asgari ücret 2026", "tazminat hesaplama", "kdv hesaplama"],
   authors: [{ name: 'net-tutar' }],
   creator: 'net-tutar',
   publisher: 'net-tutar',
@@ -48,21 +49,12 @@ export const metadata: Metadata = {
     url: 'https://net-tutar.vercel.app',
     siteName: 'net-tutar',
     title: 'net-tutar | Finansal Hesaplama Platformu',
-    description: '2026 maaş, vergi ve emeklilik hesaplama araçları.',
-    images: [
-      {
-        url: '/og-image.png', // We should generate this later or use a placeholder
-        width: 1200,
-        height: 630,
-        alt: 'net-tutar'
-      }
-    ],
+    description: '2026 maaş, vergi ve emeklilik hesaplama araçları. Tamamen ücretsiz ve güvenilir.',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'net-tutar | Finansal Hesaplama Platformu',
     description: '2026 maaş, vergi ve emeklilik hesaplama araçları.',
-    images: ['/og-image.png'],
   },
 };
 
@@ -82,6 +74,7 @@ export default function RootLayout({
               "@type": "WebSite",
               "name": "net-tutar",
               "url": "https://net-tutar.vercel.app",
+              "description": "Türkiye'nin güvenilir finansal hesaplama platformu.",
               "potentialAction": {
                 "@type": "SearchAction",
                 "target": "https://net-tutar.vercel.app/search?q={search_term_string}",
@@ -90,9 +83,29 @@ export default function RootLayout({
             }),
           }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "net-tutar",
+              "url": "https://net-tutar.vercel.app",
+              "logo": "https://net-tutar.vercel.app/icon.png",
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "customer support",
+                "url": "https://net-tutar.vercel.app/iletisim",
+                "availableLanguage": "Turkish"
+              },
+              "sameAs": []
+            }),
+          }}
+        />
       </head>
       <body className={`${inter.className} antialiased bg-[#f8fafc]`}>
         {children}
+        <CookieConsent />
       </body>
     </html>
   );

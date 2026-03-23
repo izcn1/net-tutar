@@ -16,10 +16,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
             url: `${baseUrl}/net-maas-hesaplama`,
             lastModified: new Date(),
             changeFrequency: 'monthly',
-            priority: 0.8,
+            priority: 0.9,
         },
         {
             url: `${baseUrl}/emeklilik-hesaplama`,
+            lastModified: new Date(),
+            changeFrequency: 'monthly',
+            priority: 0.9,
+        },
+        {
+            url: `${baseUrl}/kdv-hesaplama`,
+            lastModified: new Date(),
+            changeFrequency: 'monthly',
+            priority: 0.9,
+        },
+        {
+            url: `${baseUrl}/asgari-ucret-hesaplama`,
             lastModified: new Date(),
             changeFrequency: 'monthly',
             priority: 0.8,
@@ -31,34 +43,53 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.8,
         },
         {
-            url: `${baseUrl}/kdv-hesaplama`,
-            lastModified: new Date(),
-            changeFrequency: 'monthly',
-            priority: 0.8,
-        },
-        {
-            url: `${baseUrl}/asgari-ucret-hesaplama`,
-            lastModified: new Date(),
-            changeFrequency: 'monthly',
-            priority: 0.8,
-        },
-        {
             url: `${baseUrl}/vergi-dilimi`,
             lastModified: new Date(),
             changeFrequency: 'monthly',
-            priority: 0.5,
+            priority: 0.7,
         },
         {
             url: `${baseUrl}/zam-hesaplama`,
             lastModified: new Date(),
             changeFrequency: 'monthly',
-            priority: 0.5,
+            priority: 0.7,
         },
         {
             url: `${baseUrl}/kidem-tazminati`,
             lastModified: new Date(),
             changeFrequency: 'monthly',
+            priority: 0.7,
+        },
+        // Legal pages (required for AdSense)
+        {
+            url: `${baseUrl}/hakkimizda`,
+            lastModified: new Date(),
+            changeFrequency: 'yearly',
             priority: 0.5,
+        },
+        {
+            url: `${baseUrl}/iletisim`,
+            lastModified: new Date(),
+            changeFrequency: 'yearly',
+            priority: 0.5,
+        },
+        {
+            url: `${baseUrl}/gizlilik-politikasi`,
+            lastModified: new Date(),
+            changeFrequency: 'yearly',
+            priority: 0.4,
+        },
+        {
+            url: `${baseUrl}/kullanim-kosullari`,
+            lastModified: new Date(),
+            changeFrequency: 'yearly',
+            priority: 0.4,
+        },
+        {
+            url: `${baseUrl}/cerez-politikasi`,
+            lastModified: new Date(),
+            changeFrequency: 'yearly',
+            priority: 0.4,
         },
     ]
 }
